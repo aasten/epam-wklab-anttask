@@ -1,0 +1,26 @@
+<project xmlns:lib="antlib:com.epam.wklab" basedir="." default="rename-files" name="ant-task">
+    <property name="lib.dir" value="./lib-ext"/>
+    <path id="libext.classpath">
+        <!--<fileset dir="${lib.dir}" includes="**/*.jar"/>-->
+        <fileset dir="./lib-ext"/>
+        <dirset dir="${lib.dir}"/>
+    </path>
+    <taskdef uri="antlib:com.epam.wklab"
+            resource="./lib-ext/antlib.xml"
+            classpathref="libext.classpath"
+            loaderref="ant.coreLoader"/>
+    <!--<taskdef name="rename-files"-->
+             <!--classname="com.epam.wklab.RenameFiles"-->
+             <!--classpath="./lib-ext/rename-files-ant-task-1.0-SNAPSHOT.jar"-->
+             <!--loaderref="ant.coreLoader"/>-->
+
+    <target name="rename-files">
+        <lib:rename-files destDir="${dir.temp}" jobId="${job.id}">
+        <fileset dir="${dir.temp}">
+            <include name="*.xml"/>
+            <include name="*.html"/>
+            <include name="*.xhtml"/>
+        </fileset>
+        </lib:rename-files>
+    </target>
+</project>

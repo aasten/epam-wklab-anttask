@@ -1,0 +1,16 @@
+<antlib xmlns:current="ant:current">
+    <taskdef name="rename-files" classname="com.epam.wklab.RenameFiles"/>
+    <!--<typedef name="isallowed" classname="org.acme.ant.Isallowed"/>-->
+    <!--<macrodef name="ifallowed">-->
+        <!--<attribute name="action"/>-->
+        <!--<element name="do"/>-->
+        <!--<sequential>-->
+            <!--<current:if>-->
+                <!--<current:isallowed test="@{action}"/>-->
+                <!--<current:then>-->
+                    <!--<do/>-->
+                <!--</current:then>-->
+            <!--</current:if>-->
+        <!--</sequential>-->
+    <!--</macrodef>-->
+</antlib>

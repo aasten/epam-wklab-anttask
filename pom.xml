@@ -8,12 +8,17 @@
     <artifactId>rename-files-ant-task</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <!--version numbers left here because of small pom for now, to reduce lines of file-->
+    <properties>
+        <ant.version>1.8.1</ant.version>
+        <mvn.resources.version>3.0.2</mvn.resources.version>
+        <mvn.assembly.version>3.0.0</mvn.assembly.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.ant</groupId>
             <artifactId>ant</artifactId>
-            <version>1.8.1</version>
+            <version>${ant.version}</version>
         </dependency>
     </dependencies>
 
@@ -23,7 +28,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.0.2</version>
+                <version>${mvn.resources.version}</version>
                 <configuration>
                     <outputDirectory>${basedir}/ant/lib-ext</outputDirectory>
                     <resources>
@@ -31,6 +36,14 @@
                             <directory>${project.build.directory}</directory>
                             <includes>
                                 <include>*.jar</include>
+                                <include>*.xml</include>
+                            </includes>
+                            <filtering>true</filtering>
+                        </resource>
+                        <resource>
+                            <directory>${project.basedir}/src/main/java/com/epam/wklab</directory>
+                            <includes>
+                                <include>*.xml</include>
                             </includes>
                             <filtering>true</filtering>
                         </resource>
@@ -46,6 +59,17 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-assembly-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>${mvn.assembly.version}</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>${project.basedir}/src/main/assembly/zip.xml</descriptor>
+                    </descriptors>
+                </configuration>
             </plugin>
         </plugins>
     </build>

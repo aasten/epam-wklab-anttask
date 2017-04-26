@@ -1,8 +1,7 @@
 package com.epam.wklab;
 
 import org.apache.tools.ant.BuildException;
-import org.apache.tools.ant.Task;
-import org.apache.tools.ant.taskdefs.Move;
+import org.apache.tools.ant.taskdefs.AntlibDefinition;
 import org.apache.tools.ant.types.FileSet;
 
 import java.io.File;
@@ -12,7 +11,7 @@ import java.util.Date;
 /**
  * Created by sten on 26.04.17.
  */
-public class RenameFiles extends Task {
+public class RenameFiles extends AntlibDefinition {
 
     private static final String DEF_DESTDIR = ".";
     private static final String DEF_TIMESTAMP_PATTERN = "yyyyMMddHHmmss";
