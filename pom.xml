@@ -7,6 +7,8 @@
     <groupId>com.epam.wklab</groupId>
     <artifactId>rename-files-ant-task</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <!--version numbers left here because of small pom for now, to reduce lines of file-->
     <dependencies>
         <dependency>
             <groupId>org.apache.ant</groupId>
@@ -14,6 +16,40 @@
             <version>1.8.1</version>
         </dependency>
     </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <outputDirectory>${basedir}/ant/lib-ext</outputDirectory>
+                    <resources>
+                        <resource>
+                            <directory>${project.build.directory}</directory>
+                            <includes>
+                                <include>*.jar</include>
+                            </includes>
+                            <filtering>true</filtering>
+                        </resource>
+                    </resources>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <!-- here the phase you need -->
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 
 
 </project>
