@@ -13,8 +13,8 @@ Project artifact should be represented as zip package, containing
 * lib-ext
 * build.xml
 Create Apache Ant task that renames input from ZIP package files under temp dir. 
-It should add postfix to the filename: input.html -> input-${ job.id}.html.
-User should be able to send job.id using parameter via command line ant -Djob.id=x3q4hkj97zwp4.
+It should add postfix to the filename: `input.html -> input-${ job.id}.html`.
+User should be able to send job.id using parameter via command line `ant -Djob.id=x3q4hkj97zwp4`.
 Default value for postfix should be current timestamp.
 Custom task must be defined with ant.coreLoader.
 
