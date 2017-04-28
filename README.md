@@ -1,3 +1,9 @@
+# Usage
+```
+mvn package assembly:single
+```
+Use .zip artifact built in target dir. Required sample temp directory to work with.
+
 # Apache Ant task development task
 
 Use previous Apache Ant build script task as foundation.
