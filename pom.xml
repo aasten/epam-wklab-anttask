@@ -36,6 +36,11 @@
                             <directory>${project.build.directory}</directory>
                             <includes>
                                 <include>*.jar</include>
+                            </includes>
+                        </resource>
+                        <resource>
+                            <directory>${project.build.directory}</directory>
+                            <includes>
                                 <include>*.xml</include>
                             </includes>
                             <filtering>true</filtering>

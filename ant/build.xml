@@ -1,26 +1,24 @@
-<project xmlns:lib="antlib:com.epam.wklab" basedir="." default="rename-files" name="ant-task">
-    <property name="lib.dir" value="./lib-ext"/>
+<project basedir="." default="rename-files" name="ant-task">
+    <property name="dir.lib" value="lib-ext"/>
+    <property name="dir.temp" value="temp"/>
+    <tstamp>
+        <format property="job.id" pattern="yyyyMMddHHmmss"/>
+    </tstamp>
     <path id="libext.classpath">
-        <!--<fileset dir="${lib.dir}" includes="**/*.jar"/>-->
-        <fileset dir="./lib-ext"/>
-        <dirset dir="${lib.dir}"/>
+        <fileset dir="${dir.lib}" includes="**/*.jar"/>
     </path>
-    <taskdef uri="antlib:com.epam.wklab"
-            resource="./lib-ext/antlib.xml"
-            classpathref="libext.classpath"
-            loaderref="ant.coreLoader"/>
-    <!--<taskdef name="rename-files"-->
-             <!--classname="com.epam.wklab.RenameFiles"-->
-             <!--classpath="./lib-ext/rename-files-ant-task-1.0-SNAPSHOT.jar"-->
-             <!--loaderref="ant.coreLoader"/>-->
+    <taskdef name="rename-files"
+             classname="com.epam.wklab.RenameFiles"
+             classpathref="libext.classpath"
+             loaderref="ant.coreLoader"/>
 
     <target name="rename-files">
-        <lib:rename-files destDir="${dir.temp}" jobId="${job.id}">
-        <fileset dir="${dir.temp}">
-            <include name="*.xml"/>
-            <include name="*.html"/>
-            <include name="*.xhtml"/>
-        </fileset>
-        </lib:rename-files>
+        <rename-files destDir="${dir.temp}" jobId="${job.id}">
+            <fileset dir="${dir.temp}">
+                <include name="*.xml"/>
+                <include name="*.html"/>
+                <include name="*.xhtml"/>
+            </fileset>
+        </rename-files>
     </target>
 </project>
